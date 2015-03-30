@@ -1,0 +1,1 @@
+{"rsync":{"/opt/rancher":{"type":"rsync","rsync__exclude":".git/","rsync__args":["--verbose","--archive","--delete","--copy-links"],"disabled":false,"guestpath":"/opt/rancher","hostpath":"/home/lola/Workspace/vagrant-docker/provision","exclude":".git/","args":["--verbose","--archive","--delete","--copy-links"],"owner":"rancher","group":"rancher"}}}

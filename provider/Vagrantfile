@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.define "toplel" do |v|
+    v.vm.provider "docker" do |d|
+      d.cmd = ["/bin/echo", "Hello World"]
+      d.image   = "busybox"
+      #d.has_ssh = true
+      d.force_host_vm = true
+      d.remains_running = false
+      # Force to use the vagrant VM define in ./docker/Vagrantfile rather than the default
+      d.vagrant_vagrantfile = "./docker/Vagrantfile"
+    end
+
+  end
+
+end

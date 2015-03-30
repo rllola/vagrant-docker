@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require_relative 'vagrant_rancheros_guest_plugin.rb'
+
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "rancherio/rancheros"
+  config.vm.box_version = ">=0.2.0"
+
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "Docker provision test"
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+  config.vm.synced_folder ".", "/opt/rancher", type: "rsync",
+	rsync__exclude: ".git/", rsync__args: ["--verbose", "--archive", "--delete", "--copy-links"],
+	disabled: false
+
+  config.vm.provision "docker" do |d|
+    d.run "busybox",
+      cmd: "/bin/echo Hello World"
+  end
+
+#  config.vm.provision "shell", inline:
+#    "ps aux |grep 'sshd:' | awk '{print $2}' | xargs kill"
+
+end
+

@@ -1,11 +1,7 @@
 # Vagrantfile/docker example
 
-Vagrantfile with docker provisionning. It does only pull the `busybox`.
+This is an example on how to make docker run with vagrant using either `provision` or `provider`
 
-## Start VM
+## Special thanks
 
-> vagrant up
-
-## TODO
-
-* Change `phusion/ubuntu-14.04-amd64` base box to `rancherOS` image
+Thank to Jabroney on the #vagrant irc, who has answers my many questions and Darren S on the Rancher google group.
