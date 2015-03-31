@@ -15,4 +15,4 @@ You'll also need to generate an ssh key. But we will see that later...
 
 ## TODO
 
-* Try with `rancherio/rancheros` (because this os look awesome)
+* Try with `rancherio/rancheros` (because this os looks awesome)
